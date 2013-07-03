@@ -1,0 +1,6 @@
+
+  <% if !session[:user_id] %>
+    <a href="/auth/twitter">Sign in with Twitter</a>
+  <% else %>
+    <a href="/signout">Sign out</a>    
+  <% end %>

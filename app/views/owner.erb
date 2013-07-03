@@ -1,0 +1,24 @@
+<% @user.albums.each do |album| %>
+  <p><%= album.title %></p>
+  <ul>
+    <% album.photos.each do |photo| %>
+      <li><%= photo.title %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+Add Photos to Hacker Blues
+<form action="/photo/create" method="post">
+  <input type="hidden" name="photo[album_id]" value="6">
+  <input type="hidden" name="photo[user_id]" value="1">
+  <input type="text" name="photo[title]" placeholder="Title">
+  <input type="text" name="photo[photo]" placeholder="URL">
+  <input type="submit" value="Add photo">
+</form>
+<hr>
+<form action="/album/create" method="post">
+  <input type="hidden" name="nickname" value="<%= @user.nickname %>">
+  <input type="hidden" name="user_id" value="<%= @user.id %>">
+  <input type="text" placeholder="Album Title" name="title">
+  <input type="submit" value="Create">
+</form>

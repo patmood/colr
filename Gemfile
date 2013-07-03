@@ -17,6 +17,12 @@ gem 'rake'
 
 gem 'shotgun'
 
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'prizm'
+
 group :test do
   gem 'faker'
   gem 'rspec'
