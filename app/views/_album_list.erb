@@ -1,0 +1,4 @@
+<h2>Albums:</h2>
+<% @user.albums.each do |album| %>
+  <a class="select_album" href="/c/<%= @user.nickname %>/album/<%= album.id %>" data-album="<%= album.id %>"><p><%= album.title %></p></a>
+<% end %>

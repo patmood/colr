@@ -1,24 +1,23 @@
-<% @user.albums.each do |album| %>
-  <p><%= album.title %></p>
-  <ul>
-    <% album.photos.each do |photo| %>
-      <li><%= photo.title %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="container">
+  <div class="user-profile">
+    <div class="album-list">
+      <%= erb :_album_list %>
+    </div>
+    <div class="photo-list">
+      <img id="loader" src="/images/ajax-loader.gif">
+      <div class="photo_partial"><%= erb :_photo_list  %></div>
+    </div>
+  </div>
+  
 
-Add Photos to Hacker Blues
-<form action="/photo/create" method="post">
-  <input type="hidden" name="photo[album_id]" value="6">
-  <input type="hidden" name="photo[user_id]" value="1">
-  <input type="text" name="photo[title]" placeholder="Title">
-  <input type="text" name="photo[photo]" placeholder="URL">
-  <input type="submit" value="Add photo">
-</form>
-<hr>
-<form action="/album/create" method="post">
-  <input type="hidden" name="nickname" value="<%= @user.nickname %>">
-  <input type="hidden" name="user_id" value="<%= @user.id %>">
-  <input type="text" placeholder="Album Title" name="title">
-  <input type="submit" value="Create">
-</form>
+
+
+  <hr>
+
+  <form action="/album/create" method="post">
+    <input type="hidden" name="nickname" value="<%= @user.nickname %>">
+    <input type="hidden" name="user_id" value="<%= @user.id %>">
+    <input type="text" placeholder="Album Title" name="title">
+    <input type="submit" value="Create">
+  </form>
+</div>

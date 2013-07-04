@@ -20,8 +20,8 @@ require "sinatra/reloader" if development?
 
 require 'erb'
 require 'prizm'
-require 'omniauth'
 require 'omniauth-twitter'
+require 'omniauth'
 
 configure do
   enable :sessions
@@ -36,8 +36,10 @@ ENV['CONSUMER_SECRET'] ||= 'D3yp1mnoP1i7qoFNBTMjGZSYOSn04olFkHJrQ1JS8'
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
-
 APP_NAME = APP_ROOT.basename.to_s
+set :root, APP_ROOT
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
 
 # Set up the controllers and helpers
 Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }

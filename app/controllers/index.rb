@@ -22,10 +22,15 @@ end
 
 get '/c/:nickname' do
   @user = User.find(session[:user_id])
-  if @user.nickname != params[:nickname]
-    erb :guest
+  if @user.albums.any?
+    @album = @user.albums.last
   else
+    @album = Album.new
+  end
+  if @user.nickname == params[:nickname]
     erb :owner
+  else
+    erb :guest
   end
 end
 
@@ -33,8 +38,6 @@ get '/signout' do
   session[:user_id] = nil
   redirect '/'
 end
-
-
 
 # get '/:nickname/:id'
 #   @user = User.find(session[:user])
