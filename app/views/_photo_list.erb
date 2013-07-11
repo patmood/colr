@@ -1,20 +1,17 @@
-<h2>Photos:</h2>
+<div id="add_photo_form">
+  <form action="/photo/create" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="photo[album_id]" value="<%= @album.id %>">
+    <input type="hidden" name="photo[user_id]" value="<%= @user.id %>">
+    <input type="file" name="photo[url]">
+    <input type="text" name="photo[title]" placeholder="Title">
+    <input type="submit" value="Add photo">
+  </form>
+</div>
+<h2>Photos: <i class="icon-plus-sign-alt"></i></h2>
       <ul>
         <% @album.photos.each do |photo| %>
             <img src="<%= photo.url.thumb %>">
         <% end %>
       </ul>
 
-<div id="add_photo">
-  Add Photo to Album <%= @album.id %>
-</div>
 
-<div id="add_photo_form">
-  <form action="/photo/create" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="photo[album_id]" value="<%= @album.id %>">
-    <input type="hidden" name="photo[user_id]" value="<%= @user.id %>">
-    <input type="text" name="photo[title]" placeholder="Title">
-    <input type="file" name="photo[url]" placeholder="URL">
-    <input type="submit" value="Add photo">
-  </form>
-</div>

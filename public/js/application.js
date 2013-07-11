@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  $('.album-list .icon-plus-sign-alt').on('click', function(){
+    $('#create_album').slideToggle();
+  });
 
   $('.album-list .select_album').on('click',function(){
     event.preventDefault();
@@ -18,8 +21,13 @@ $(document).ready(function() {
     });
   });
 
-  $('.photo-list').on('click', '#add_photo', function(){
+  $('.photo-list').on('click', '.icon-plus-sign-alt', function(){
     $('#add_photo_form').slideToggle(100);
+  });
+
+  $('.photo-list').on('change', 'input[type="file"]', function(){
+    // $('#add_photo_form form').submit();
+    // alert("hello");
   });
 
 

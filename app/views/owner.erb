@@ -1,23 +1,21 @@
-<div class="container">
-  <div class="user-profile">
-    <div class="album-list">
-      <%= erb :_album_list %>
-    </div>
-    <div class="photo-list">
-      <img id="loader" src="/images/ajax-loader.gif">
-      <div class="photo_partial"><%= erb :_photo_list  %></div>
-    </div>
+<div class="user-profile">
+  <div class="album-list">
+    <form id="create_album" action="/album/create" method="post" style>
+      <input type="hidden" name="nickname" value="<%= @user.nickname %>">
+      <input type="hidden" name="user_id" value="<%= @user.id %>">
+      <input type="text" placeholder="Album Title" name="title">
+      <input type="submit" value="Create" style="display:none;">
+    </form>
+    <%= erb :_album_list %>
   </div>
-  
-
-
-
-  <hr>
-
-  <form action="/album/create" method="post">
-    <input type="hidden" name="nickname" value="<%= @user.nickname %>">
-    <input type="hidden" name="user_id" value="<%= @user.id %>">
-    <input type="text" placeholder="Album Title" name="title">
-    <input type="submit" value="Create">
-  </form>
+  <div class="photo-list">
+    <img id="loader" src="/images/ajax-loader.gif">
+    <div class="photo_partial"><%= erb :_photo_list  %></div>
+  </div>
 </div>
+
+
+
+
+<hr>
+
